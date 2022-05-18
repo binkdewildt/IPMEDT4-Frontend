@@ -1,2 +1,9 @@
 # IPMEDT4 PostNL React App
-Hello world
+
+## Installatie
+```
+git clone <link naar github>
+cd <project naam>
+npm install
+npm start
+```
