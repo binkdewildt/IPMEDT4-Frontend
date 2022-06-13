@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import LoginHandler from "./components/layout/Login/LoginHandler";
 import { logIn } from "./actions/SessionActions";
 import { QuestionsList } from "./components/layout/Questions/QuestionsList";
-import {NavBar} from "./components/layout/UI/NavBar";
+import { NavBar } from "./components/layout/UI/NavBar";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.session.loggedIn);

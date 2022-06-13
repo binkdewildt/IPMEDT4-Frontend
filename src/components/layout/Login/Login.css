@@ -1,0 +1,144 @@
+:root {
+    --main-text-color: #29324A;
+    --secondary-text-color: #A4A4A4;
+    --main-background-color: #F3F4F7;
+    --main-white-color: #FFFFFF;
+
+    --postNL-orange: #ED7000;
+    --postNL-blue: #3440B6;
+    --input-grey: #D5D9E2;
+  }
+
+@font-face {
+    font-family: PostNL-Regular;
+    src: url(/public/font/PostNL-Regular.ttf);
+  }
+
+@font-face {
+    font-family: PostNL-Light;
+    src: url(/public/font/PostNL-Light.ttf);
+  }
+
+.main-text-color{
+    color: var(--main-text-color);
+}
+
+.secondary-text-color{
+    color: var(--secondary-text-color);
+}
+
+h1{
+    font-size: 2.43rem;
+    font-family: PostNL-Regular;
+}
+
+p{
+    font-family: postNL-light;
+}
+
+label{
+    font-family: postNL-light;
+}
+
+a{
+    font-family: postNL-regular;
+    color: var(--postNL-blue);
+    text-decoration: none;
+}
+
+input{
+    border-radius: 6px;
+    border: 1.2px solid var(--input-grey);
+}
+
+.formButtonSection{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.primary-button-style-1{
+    background-color: var(--postNL-orange);
+    color: var(--main-white-color);
+    padding: 10px 30px 10px 30px;
+    border: none;
+    border-radius: 4px 4px 0px 4px;
+    font-family: PostNL-regular;
+    font-size: 1.2rem;
+}
+
+
+.primary-button-style-1:hover{
+    cursor: pointer;
+}
+
+.sectionLeft > h1{
+    inline-size: 40%;
+    text-align: center;
+    margin: 0;
+}
+
+
+input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+.loginWrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--main-white-color);
+    margin: 40px 30px 40px 30px;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.sectionLeft{
+    display: grid;
+    justify-items: center;
+}
+
+.sectionRight{
+    align-self: center;
+    margin-left: 20px;
+}
+
+.loginImg{
+    width: auto; 
+    height: 7rem; 
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .sectionLeft > h1{
+        inline-size: 60%;
+    }
+  }
+
+@media only screen and (max-width: 950px) {
+    .sectionLeft > h1{
+        inline-size: 80%;
+    }
+  }
+
+@media only screen and (max-width: 650px) {
+    .loginWrapper{
+        grid-template-columns: 1fr;
+    }
+
+    .sectionLeft{
+        margin-bottom: 20px;
+    }
+
+    .desktop-only{
+        display: none;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .sectionLeft > h1{
+        inline-size: 100%;
+    }
+  }

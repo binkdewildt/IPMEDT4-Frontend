@@ -8,6 +8,11 @@
     --input-grey: #D5D9E2;
   }
 
+  @font-face {
+    font-family: PostNL-Regular;
+    src: url(/public/font/PostNL-Regular.ttf);
+  }
+
 nav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -41,4 +46,5 @@ header li {
 .scoreSection__li > h1{
     color: var(--postNL-orange);
     font-size: 1.4rem;
+    font-family: PostNL-regular;
 }
