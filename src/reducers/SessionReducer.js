@@ -1,8 +1,8 @@
 import { checkIfLoggedIn } from "../actions/SessionActions";
 
 const initialState = {
-  token: checkIfLoggedIn(),
-  loggedIn: checkIfLoggedIn() !== "",
+  token: "",
+  loggedIn: false,
   user: {
     permissions: "",
     username: "",
