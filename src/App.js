@@ -16,7 +16,7 @@ function App() {
   return (
     <main>
       <NavBar />
-      <LoginHandler />
+      <QuestionsList />
     </main>
   );
 }

@@ -9,15 +9,6 @@
     --input-grey: #D5D9E2;
   }
 
-@font-face {
-    font-family: PostNL-Regular;
-    src: url(/public/font/PostNL-Regular.ttf);
-  }
-
-@font-face {
-    font-family: PostNL-Light;
-    src: url(/public/font/PostNL-Light.ttf);
-  }
 
 .main-text-color{
     color: var(--main-text-color);
@@ -57,20 +48,6 @@ input{
     gap: 10px;
 }
 
-.primary-button-style-1{
-    background-color: var(--postNL-orange);
-    color: var(--main-white-color);
-    padding: 10px 30px 10px 30px;
-    border: none;
-    border-radius: 4px 4px 0px 4px;
-    font-family: PostNL-regular;
-    font-size: 1.2rem;
-}
-
-
-.primary-button-style-1:hover{
-    cursor: pointer;
-}
 
 .sectionLeft > h1{
     inline-size: 40%;
