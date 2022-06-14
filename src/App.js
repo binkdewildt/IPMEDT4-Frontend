@@ -6,6 +6,7 @@ import LoginHandler from "./components/layout/Login/LoginHandler";
 import { logIn } from "./actions/SessionActions";
 import { QuestionsList } from "./components/layout/Questions/QuestionsList";
 import { NavBar } from "./components/layout/UI/NavBar";
+import { ProgressBar } from "./components/layout/UI/ProgressBar"
 
 function App() {
   const isLoggedIn = useSelector((state) => state.session.loggedIn);
@@ -17,6 +18,7 @@ function App() {
     <main>
       <NavBar />
       <QuestionsList />
+      <ProgressBar />
     </main>
   );
 }

@@ -1,0 +1,31 @@
+:root {
+    --main-text-color: #29324A;
+    --main-background-color: #F3F4F7;
+    --main-white-color: #FFFFFF;
+  
+    --postNL-orange: #ED7000;
+    --postNL-blue: #3440B6;
+    --input-grey: #D5D9E2;
+  }
+
+footer{
+    background-color: var(--main-white-color);
+    background-color: var(--main-white-color);
+    margin: 0px 30px 40px 30px;
+    padding: 5px 20px 20px 20px;
+    border-radius: 15px;
+
+}
+
+.progressBar{
+    border: 2px var(--postNL-blue) solid;
+    border-radius: 25px;
+}
+
+.progressBarProgress{
+    height:24px;
+    width:20%;
+    border-radius: 25px;
+    background-color: var(--postNL-orange);
+
+}
