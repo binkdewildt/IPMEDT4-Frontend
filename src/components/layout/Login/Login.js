@@ -24,6 +24,10 @@ export const Login = () => {
       </section>
       <secton className="sectionRight">
         <h1 className="main-text-color desktop-only"> Inloggen </h1>
+        <section className="sectionError">
+          <img src="/img/exclamation.png" className="errorImg"></img>
+          <p className="red-text"> Email/wachtwoord is onjuist. </p>
+        </section>
           <form onSubmit={onSubmit}>
             <label htmlFor="email"> Email: </label>
             <input
