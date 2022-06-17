@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import LoginHandler from "./components/layout/Login/LoginHandler";
 import { logIn } from "./actions/SessionActions";
 import { QuestionsList } from "./components/layout/Questions/QuestionsList";
+import { Information } from "./components/layout/UI/Information";
 import { NavBar } from "./components/layout/UI/NavBar";
 import { ProgressBar } from "./components/layout/UI/ProgressBar"
 import { Login } from "./components/layout/Login/Login";
@@ -18,7 +19,7 @@ function App() {
   return (
     <main>
       <NavBar />
-      <LoginHandler />
+      <Information />
       <ProgressBar />
     </main>
   );
