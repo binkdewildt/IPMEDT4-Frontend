@@ -19,11 +19,22 @@
     place-items: center;
 }
 
-.sectionLeftLearnpath{
-
-}
 
 .roadmapImg{
     width: auto;
     height: 35vw;
 }
+
+
+
+
+
+@media only screen and (max-width: 950px) {
+    .learnpathWrapper{
+        grid-template-columns: 1fr;
+    }
+
+    .roadmapImg{
+        margin-top: 1rem;
+    }
+  }

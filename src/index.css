@@ -94,3 +94,20 @@ code {
 .text-align-center{
   text-align: center;
 }
+
+@media only screen and (max-width: 400px) {
+  .h1-style{
+    font-size: 16pt;
+  }
+
+
+  .primary-button-style-2{
+    background-color: var(--postNL-blue);
+    color: var(--main-white-color);
+    padding: 10px 50px 10px 50px;
+    border: none;
+    border-radius: 34px;
+    font-family: PostNL-regular;
+    font-size: 0.8rem;
+  }
+}

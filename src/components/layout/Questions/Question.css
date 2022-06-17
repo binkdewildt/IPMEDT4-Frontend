@@ -28,6 +28,7 @@
     gap: 24px;
 }
 
+
 .questionImg{
     width: auto; 
     height: 5rem; 
@@ -58,10 +59,17 @@
     text-align: center;
 }
 
+.inputLabel{
+    margin-top: 100px;
+}
 
 @media only screen and (max-width: 700px) {
     .questionWrapperGrid{
         grid-template-columns: 1fr;
         gap: 20px
+    }
+
+    .inputLabel{
+        margin-top: 10px;
     }
   }
