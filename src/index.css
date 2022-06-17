@@ -48,6 +48,22 @@ code {
   cursor: pointer;
 }
 
+.primary-button-style-2{
+  background-color: var(--postNL-blue);
+  color: var(--main-white-color);
+  padding: 10px 50px 10px 50px;
+  border: none;
+  border-radius: 34px;
+  font-family: PostNL-regular;
+  font-size: 1.2rem;
+}
+
+
+.primary-button-style-2:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .answer-button{
   background-color: var(--main-white-color);
   color: var(--postNL-blue);
@@ -55,7 +71,7 @@ code {
   padding: 10px 30px 10px 30px;
   border: 2px var(--input-grey) solid;
   font-family: PostNL-light;
-  font-size: 22px;
+  font-size: 1rem;
   transition: 0.2s all;
 }
 

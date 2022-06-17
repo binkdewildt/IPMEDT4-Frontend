@@ -27,8 +27,13 @@ export const QuestionsList = () => {
           <button className="answer-button">Antwoord 2</button>
           <button className="answer-button">Antwoord 3</button>
           <button className="answer-button">Antwoord 4</button>
+
         </section>
       </section>
+      <section className="sectionExplain">
+              <p className="sectionExplainReason"> Reden van juiste antwoord  </p>
+              <button className="primary-button-style-2"> Ga verder </button>
+          </section>
     </section>
   );
 };
