@@ -8,6 +8,7 @@ import { QuestionsList } from "./components/layout/Questions/QuestionsList";
 import { Information } from "./components/layout/UI/Information";
 import { NavBar } from "./components/layout/UI/NavBar";
 import { ProgressBar } from "./components/layout/UI/ProgressBar"
+import { Learnpath } from "./components/layout/UI/Learnpath"
 import { Login } from "./components/layout/Login/Login";
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   return (
     <main>
       <NavBar />
-      <Information />
+      <Learnpath />
       <ProgressBar />
     </main>
   );

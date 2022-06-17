@@ -33,6 +33,11 @@ code {
     monospace;
 }
 
+.h1-style{
+  color: var(--main-text-color);
+  font-weight: 500;
+}
+
 .primary-button-style-1{
   background-color: var(--postNL-orange);
   color: var(--main-white-color);
