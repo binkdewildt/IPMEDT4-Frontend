@@ -40,6 +40,7 @@ a{
 input{
     border-radius: 6px;
     border: 1.2px solid var(--input-grey);
+    font-family: PostNL-Light;
 }
 
 .formButtonSection{

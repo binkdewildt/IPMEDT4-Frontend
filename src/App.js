@@ -11,6 +11,7 @@ import { NavBar } from "./components/layout/UI/NavBar";
 import { ProgressBar } from "./components/layout/UI/ProgressBar"
 import { Learnpath } from "./components/layout/UI/Learnpath"
 import { Login } from "./components/layout/Login/Login";
+import { AdminStartpage, adminStartpage } from "./components/layout/Admin/AdminStartpage";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.session.loggedIn);
@@ -21,8 +22,7 @@ function App() {
   return (
     <main>
       <NavBar />
-      <QuestionsListOpen />
-      <ProgressBar />
+      <AdminStartpage />
     </main>
   );
 }
