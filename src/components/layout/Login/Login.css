@@ -28,7 +28,8 @@ p{
 }
 
 label{
-    font-family: postNL-light;
+    font-family: postNL-regular;
+    color: var(--main-text-color)
 }
 
 a{

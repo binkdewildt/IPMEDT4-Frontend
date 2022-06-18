@@ -12,6 +12,7 @@ import { ProgressBar } from "./components/layout/UI/ProgressBar"
 import { Learnpath } from "./components/layout/UI/Learnpath"
 import { Login } from "./components/layout/Login/Login";
 import { AdminStartpage, adminStartpage } from "./components/layout/Admin/AdminStartpage";
+import { AdminAddMultipleChoice } from "./components/layout/Admin/AdminAddMultipleChoice";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.session.loggedIn);
@@ -22,7 +23,7 @@ function App() {
   return (
     <main>
       <NavBar />
-      <AdminStartpage />
+      <AdminAddMultipleChoice />
     </main>
   );
 }
