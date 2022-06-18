@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./AdminAddMultipleChoice.css";
+import "./AdminAddQuestion.css";
 
 export const AdminAddMultipleChoice = () => {
   return (
-    <section className="AdminAddMultipleChoice">
+    <section className="AdminAddQuestion">
         <h1 className="text-align-center h1-style-ignore"> Gesloten vraag toevoegen </h1>
         <section className="sectionQuestionInputFields">
             <label for="question" className="bigger-font-size"> De vraag zelf: </label>

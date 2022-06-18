@@ -9,7 +9,7 @@
     --input-grey: #D5D9E2;
   }
 
-.AdminAddMultipleChoice{
+.AdminAddQuestion{
     background-color: var(--main-white-color);
     margin: 40px 30px 40px 30px;
     padding: 40px;
