@@ -1,0 +1,75 @@
+:root {
+    --main-text-color: #29324A;
+    --secondary-text-color: #A4A4A4;
+    --main-background-color: #F3F4F7;
+    --main-white-color: #FFFFFF;
+
+    --postNL-orange: #ED7000;
+    --postNL-blue: #3440B6;
+    --input-grey: #D5D9E2;
+  }
+
+.questionWrapper{
+    background-color: var(--main-white-color);
+    margin: 40px 30px 40px 30px;
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.questionWrapperGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+}
+
+.sectionRightQuestion{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+
+.questionImg{
+    width: auto; 
+    height: 5rem; 
+}
+
+.imgWrapperQuestion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.sectionLeftQuestion{
+    border: 4px var(--input-grey) solid;
+    border-radius: 10px;
+}
+
+.sectionExplain{
+    margin-top: 20px;
+    border: 2px var(--input-grey) solid;
+    border-radius: 10px;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.sectionExplainReason{
+    padding: 0px 20px 0px 20px;
+    text-align: center;
+}
+
+.inputLabel{
+    margin-top: 100px;
+}
+
+@media only screen and (max-width: 700px) {
+    .questionWrapperGrid{
+        grid-template-columns: 1fr;
+        gap: 20px
+    }
+
+    .inputLabel{
+        margin-top: 10px;
+    }
+  }

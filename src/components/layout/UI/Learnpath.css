@@ -1,0 +1,40 @@
+:root {
+    --main-text-color: #29324A;
+    --secondary-text-color: #A4A4A4;
+    --main-background-color: #F3F4F7;
+    --main-white-color: #FFFFFF;
+
+    --postNL-orange: #ED7000;
+    --postNL-blue: #3440B6;
+    --input-grey: #D5D9E2;
+  }
+
+.learnpathWrapper{
+    background-color: var(--main-white-color);
+    margin: 40px 30px 40px 30px;
+    padding: 40px;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+
+.roadmapImg{
+    width: auto;
+    height: 35vw;
+}
+
+
+
+
+
+@media only screen and (max-width: 950px) {
+    .learnpathWrapper{
+        grid-template-columns: 1fr;
+    }
+
+    .roadmapImg{
+        margin-top: 1rem;
+    }
+  }

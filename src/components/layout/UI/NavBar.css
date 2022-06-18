@@ -1,0 +1,51 @@
+:root {
+    --main-text-color: #29324A;
+    --main-background-color: #F3F4F7;
+    --main-white-color: #FFFFFF;
+
+    --postNL-orange: #ED7000;
+    --postNL-blue: #3440B6;
+    --input-grey: #D5D9E2;
+  }
+
+  @font-face {
+    font-family: PostNL-Regular;
+    src: url(/public/font/PostNL-Regular.ttf);
+  }
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10px 20px 10px 20px;
+    align-items: center;
+    background-color: var(--main-white-color);
+}
+
+p{
+    color: var(--main-text-color)
+}
+
+header li {
+    list-style: none;
+    display: inline-block;
+}
+
+.imgSection__li > img{
+    width: auto; 
+    height: 5rem; 
+}
+
+.imgSection__li{
+    justify-self: center;
+}
+
+.signoutSection__li{
+    justify-self: end;
+}
+
+.scoreSection__li > h1{
+    color: var(--postNL-orange);
+    font-size: 1.4rem;
+    font-family: PostNL-regular;
+}
+

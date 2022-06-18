@@ -5,7 +5,7 @@ import { getAllQuestions } from "../../../actions/QuestionActions";
 
 import "./Question.css";
 
-export const QuestionsList = () => {
+export const QuestionsListOpen = () => {
   const allQuestions = useSelector((state) => state.questions.allQuestions);
   const dispatch = useDispatch();
   return (
@@ -23,17 +23,12 @@ export const QuestionsList = () => {
             ))}
         </section>
         <section className="sectionRightQuestion">
-          <button className="answer-button">Antwoord 1</button>
-          <button className="answer-button">Antwoord 2</button>
-          <button className="answer-button">Antwoord 3</button>
-          <button className="answer-button">Antwoord 4</button>
+          <label for="answer" className="inputLabel">Antwoord:</label>
+          <input type="text" name="answer"/>
+          <button className="primary-button-style-2"> Ga verder </button>
 
         </section>
       </section>
-      <section className="sectionExplain">
-              <p className="sectionExplainReason"> Reden van juiste antwoord  </p>
-              <button className="primary-button-style-2"> Ga verder </button>
-          </section>
     </section>
   );
 };
