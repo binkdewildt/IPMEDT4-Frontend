@@ -11,7 +11,7 @@ export const Question = ({ question }) => {
   const totalQuestion = useSelector(
     (state) => state.questions.allQuestions.length
   );
-  const current = useSelector((state) => state.quiz.current);
+  const current = useSelector((state) => state.quiz.currentQuestion);
 
   //* Inits
   const dispatch = useDispatch();
@@ -42,10 +42,6 @@ export const Question = ({ question }) => {
 
     dispatch(nextQuestion());
   };
-
-  // if (true) {
-  //   return;
-  // }
 
   // Return
   return (

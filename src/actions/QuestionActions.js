@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import QuestionService from "../services/question.service";
 
 export const getAllQuestions = () => (dispatch) => {
@@ -29,10 +30,54 @@ export const getAllQuestions = () => (dispatch) => {
     });
 };
 
-export const getQuestion = (id) => (dispatch) => {};
+export const addOpenQuestion = (question, answer, reason) => (dispatch) => {
+  const questionBody = {
+    question: question,
+    mcQuestion: false,
+    answerA: "",
+    answerB: "",
+    answerC: "",
+    answerD: "",
+    reason: reason,
+    correctAnswer: answer,
+    points: 10,
+  };
+  return QuestionService.addQuestion(questionBody).then((response) => {
+    dispatch({
+      type: "ADD_QUESTION",
+      payload: questionBody,
+    });
+  });
+};
 
-export const addQuestion =
-  ({ props }) =>
-  (dispatch) => {};
+export const addMcQuestion =
+  (
+    question,
+    answerA,
+    answerB,
+    answerC,
+    answerD,
+    answerAmount,
+    correctAnswer,
+    reason
+  ) =>
+  (dispatch) => {
+    const questionBody = {
+      question: question,
+      mcQuestion: false,
+      answerA: answerA,
+      answerB: answerB,
+      answerC: answerAmount >= 3 ? answerC : "",
+      answerD: answerAmount >= 4 ? answerD : "",
+      reason: reason,
+      correctAnswer: correctAnswer,
+      points: 10,
+    };
 
-export const deleteQuestion = (id) => (dispatch) => {};
+    return QuestionService.addQuestion(questionBody).then((response) => {
+      dispatch({
+        type: "ADD_QUESTION",
+        payload: questionBody,
+      });
+    });
+  };

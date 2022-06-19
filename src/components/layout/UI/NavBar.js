@@ -6,7 +6,7 @@ import "./NavBar.css";
 
 export const NavBar = () => {
   const score = useSelector((state) => state.quiz.score);
-  const inQuiz = useSelector((state) => state.quiz.active);
+  const inQuiz = useSelector((state) => state.quiz.inQuiz);
   const loggedIn = useSelector((state) => state.session.loggedIn);
 
   //* Inits
@@ -29,19 +29,18 @@ export const NavBar = () => {
           <img src="/img/postnl-logo.png" alt="PostNL logo"></img>
         </NavLink>
 
-        <section className="signoutSection__li">
-          {/* <a onClick={() => dispatch(logOut())}>Uitloggen</a> */}
-
-          <button
-            type="button"
-            className="a"
-            onClick={() => {
-              dispatch(logOut());
-              navigate("/login");
-            }}>
-            Uitloggen
-          </button>
-        </section>
+        {loggedIn && (
+          <section className="signoutSection__li">
+            <button
+              type="button"
+              className="a"
+              onClick={() => {
+                dispatch(logOut());
+              }}>
+              Uitloggen
+            </button>
+          </section>
+        )}
       </nav>
     </header>
   );

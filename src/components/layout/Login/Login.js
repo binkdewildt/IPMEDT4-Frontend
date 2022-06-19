@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logIn } from "../../../actions/SessionActions";
 import { useNavigate } from "react-router-dom";
@@ -7,8 +7,8 @@ import { Navigate } from "react-router-dom";
 import "./Login.css";
 
 export const Login = () => {
-  const [email, setEmail] = useState("normal@gmail.com");
-  const [password, setPassword] = useState("normal123");
+  const [email, setEmail] = useState("admin@gmail.com");
+  const [password, setPassword] = useState("admin123");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,6 +30,10 @@ export const Login = () => {
     // Success
     dispatch(logIn(email, password));
   };
+
+  useEffect(() => {
+    dispatch({ type: "CLEAR_AUTH_ERROR" });
+  }, []);
 
   if (useSelector((state) => state.session.loggedIn)) {
     return <Navigate to="/" />;

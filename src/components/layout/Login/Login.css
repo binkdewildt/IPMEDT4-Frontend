@@ -38,6 +38,7 @@ button.a {
     border: none;
     padding: 0;
     outline: none;
+    cursor: pointer;
 }
 a, .a{
     font-family: postNL-regular;

@@ -9,9 +9,9 @@ export const ProgressBar = () => {
   //   100;
 
   const progress = useSelector((state) =>
-    state.quiz.current === 0
+    state.quiz.currentQuestion === 0
       ? 0
-      : (state.quiz.current / state.questions.total) * 100
+      : (state.quiz.currentQuestion / state.questions.total) * 100
   );
 
   return (

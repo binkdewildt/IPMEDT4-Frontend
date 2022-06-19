@@ -4,7 +4,6 @@ import AuthService from "../services/auth.service";
 export const logIn = (email, password) => (dispatch) => {
   return AuthService.login(email, password)
     .then((response) => {
-      console.log(response);
       const user = response.user;
       const token = response.access_token;
 
@@ -38,7 +37,7 @@ export const logOut = () => (dispatch) => {
   AuthService.logout();
 
   dispatch({
-    type: "LOGOUT",
+    type: "DESTROY_SESSION",
   });
 };
 
@@ -73,9 +72,3 @@ export const register = (name, email, password) => (dispatch) => {
       });
     });
 };
-
-// export const checkIfLoggedIn = () => {
-//   // return sessionStorage.getItem("access_token");
-
-//   // if sessionStorage.getItem()
-// };

@@ -10,11 +10,15 @@ const getQuestion = (id) => {
   return axios.get(`${URL}/questions/${id}`, { headers: authHeader() });
 };
 
-const answerQuestion = (id, answer) => {};
+const addQuestion = (question) => {
+  return axios.put(`${URL}/questions`, question, {
+    headers: authHeader(),
+  });
+};
 
-const addQuestion = ({ props }) => {};
-
-const deleteQuestion = (id) => {};
+const deleteQuestion = (id) => {
+  return axios.delete(`${URL}/questions`, { headers: authHeader() });
+};
 
 export default {
   getAllQuestions,

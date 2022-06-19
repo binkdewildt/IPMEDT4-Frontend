@@ -15,15 +15,16 @@ import "./Question.css";
 
 export const QuestionsList = () => {
   //* Variables
-  const started = useSelector((state) => state.quiz.active);
   const requested = useSelector((state) => state.questions.requested);
-  const finished = useSelector((state) => state.quiz.finished);
   const fetched = useSelector((state) => state.questions.fetched);
+
+  const started = useSelector((state) => state.quiz.inQuiz);
+  const finished = useSelector((state) => state.quiz.finished);
   const showInfo = useSelector((state) => state.quiz.showInfo);
-  const current = 0;
   const currentQuestion =
-    useSelector((state) => state.questions.allQuestions[state.quiz.current]) ??
-    null;
+    useSelector(
+      (state) => state.questions.allQuestions[state.quiz.currentQuestion]
+    ) ?? null;
 
   //* Inits
   const naviate = useNavigate();
