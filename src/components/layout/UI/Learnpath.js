@@ -11,9 +11,9 @@ export const Learnpath = () => {
     (state) => state.session.user.permissions === "Admin"
   );
   const username = useSelector((state) => state.session.user.name);
-  const current = useSelector((state) => state.quiz.current);
-  const fetched = useSelector((state) => state.quiz.fetchedLast);
-  const finished = useSelector((state) => state.quiz.finished);
+  const hasPrev = useSelector((state) => state.quiz.hasPrev);
+  const active = useSelector((state) => state.quiz.inQuiz);
+  const fetched = useSelector((state) => state.quiz.fetchedPrev);
 
   //* Inits
   const dispatch = useDispatch();
@@ -46,9 +46,7 @@ export const Learnpath = () => {
           {username}
         </h1>
         <button onClick={() => start()} className="primary-button-style-2">
-          {current === 0 && finished
-            ? "Nieuwe zelfstudie"
-            : "Hervat zelfstudie"}
+          {!hasPrev || active ? "Nieuwe zelfstudie" : "Hervat zelfstudie"}
         </button>
         {admin && (
           <NavLink to="/dashboard" className="secondary-button-style-2">

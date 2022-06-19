@@ -5,11 +5,9 @@ import { Navigate } from "react-router-dom";
 const AdminRoute = (props) => {
   const loggedIn = useSelector((state) => state.session.loggedIn);
   const admin = useSelector(
-    (state) => state.session.user.permissions === "Admn"
+    (state) => state.session.user.permissions === "Admin"
   );
 
-  console.log(admin);
-  console.log("Jall")
   // Checks
   if (!loggedIn) {
     return <Navigate to="/login" />;
@@ -17,8 +15,7 @@ const AdminRoute = (props) => {
     return <Navigate to="/" />;
   }
 
-  return <p>Hallo?</p>;
-  // return props.children;
+  return props.children;
 };
 
 export default AdminRoute;

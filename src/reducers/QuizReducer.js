@@ -1,10 +1,19 @@
 const initialState = {
-  finished: false,
-  fetchedLast: false,
-  active: false,
-  current: 0,
-  score: 0,
+  // finished: false,
+  // fetchedLast: false,
+  // active: false,
+  // current: 0,
+  // score: 0,
+  // showInfo: true,
+  // hasPrev: false,
+
   showInfo: true,
+  currentQuestion: 0,
+  score: 0,
+  inQuiz: false,
+  hasPrev: false,
+  fetchedPrev: false,
+  finished: false,
 };
 
 export const QuizReducer = (state = initialState, action) => {
@@ -13,21 +22,21 @@ export const QuizReducer = (state = initialState, action) => {
     case "START_QUIZ":
       return {
         ...state,
-        active: true,
+        inQuiz: true,
       };
 
     // Stop the quiz
     case "STOP_QUIZ":
       return {
         ...state,
-        active: false,
+        inQuiz: false,
       };
 
     // Go to the next question
     case "NEXT_QUESTION":
       return {
         ...state,
-        current: state.current + 1,
+        currentQuestion: state.currentQuestion + 1,
       };
 
     // Add the current score
@@ -41,23 +50,24 @@ export const QuizReducer = (state = initialState, action) => {
     case "FETCHED_LAST":
       return {
         ...state,
-        fetchedLast: true,
+        fetchedPrev: true,
       };
 
     // Set the current question
     case "SET_CURRENT":
       return {
         ...state,
-        current: action.payload,
+        currentQuestion: action.payload,
       };
 
     // Set the last quiz
     case "SET_LAST_QUIZ":
       return {
         ...state,
-        fetchedLast: true,
+        hasPrev: true,
+        fetchedPrev: true,
         finished: action.payload.finished,
-        current: action.payload.question,
+        currentQuestion: action.payload.question,
         score: action.payload.score,
       };
 
@@ -72,7 +82,7 @@ export const QuizReducer = (state = initialState, action) => {
       return {
         ...state,
         finished: false,
-        current: 0,
+        currentQuestion: 0,
         score: 0,
       };
 
@@ -80,7 +90,7 @@ export const QuizReducer = (state = initialState, action) => {
       return {
         ...state,
         showInfo: false,
-      }
+      };
 
     default:
       return state;

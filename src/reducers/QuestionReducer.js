@@ -77,7 +77,7 @@ export const QuestionReducer = (state = initialState, action) => {
     case "ADD_QUESTION":
       return {
         ...state,
-        allQuestions: [action.payload, ...state.allQuestions],
+        allQuestions: [...state.allQuestions, action.payload],
       };
 
     // Delete a question

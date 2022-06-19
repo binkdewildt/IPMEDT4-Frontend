@@ -6,7 +6,7 @@ import "./NavBar.css";
 
 export const NavBar = () => {
   const score = useSelector((state) => state.quiz.score);
-  const inQuiz = useSelector((state) => state.quiz.active);
+  const inQuiz = useSelector((state) => state.quiz.inQuiz);
   const loggedIn = useSelector((state) => state.session.loggedIn);
 
   //* Inits
