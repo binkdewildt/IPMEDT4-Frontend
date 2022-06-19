@@ -32,7 +32,14 @@ label{
     color: var(--main-text-color)
 }
 
-a{
+button.a {
+    background: none;
+    width: max-content;
+    border: none;
+    padding: 0;
+    outline: none;
+}
+a, .a{
     font-family: postNL-regular;
     color: var(--postNL-blue);
     text-decoration: none;

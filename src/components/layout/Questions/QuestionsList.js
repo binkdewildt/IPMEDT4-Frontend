@@ -1,39 +1,63 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
+// Components
+import { Information } from "../UI/Information";
+import { Loading } from "../UI/Loading";
+import { FinishedQuiz } from "./FinishedQuiz";
+import { Question } from "./Question";
+
+// Functions
 import { getAllQuestions } from "../../../actions/QuestionActions";
 
 import "./Question.css";
 
 export const QuestionsList = () => {
-  const allQuestions = useSelector((state) => state.questions.allQuestions);
+  //* Variables
+  const started = useSelector((state) => state.quiz.active);
+  const requested = useSelector((state) => state.questions.requested);
+  const finished = useSelector((state) => state.quiz.finished);
+  const fetched = useSelector((state) => state.questions.fetched);
+  const showInfo = useSelector((state) => state.quiz.showInfo);
+  const current = 0;
+  const currentQuestion =
+    useSelector((state) => state.questions.allQuestions[state.quiz.current]) ??
+    null;
+
+  //* Inits
+  const naviate = useNavigate();
   const dispatch = useDispatch();
+
+  //* Effects
+  useEffect(() => {
+    if (!started) {
+      naviate("/");
+    }
+
+    if (started && !fetched && !requested) {
+      console.log("Get all the question");
+      dispatch(getAllQuestions());
+    }
+  }, []);
+
+  if (showInfo) {
+    return <Information />;
+  }
+
+  // If already requested
+  if (requested || !fetched || !started) {
+    return <Loading />;
+  }
+
+  // If finished
+  if (finished) {
+    return <FinishedQuiz />;
+  }
+
   return (
     <section className="questionWrapper">
-      <section className="imgWrapperQuestion">
-        <img src="/img/question-mark.png" className="questionImg"/>
-      </section>
-      <section className="questionWrapperGrid">
-        <section className="sectionLeftQuestion">
-            {/* <button onClick={() => dispatch(getAllQuestions())}> GetAll </button> */}
-            <h1 className="orange-text text-align-center">Vraag</h1>
-
-            {allQuestions.map((question) => (
-              <p className="text-align-center" key={question.id}> {question.question}</p>
-            ))}
-        </section>
-        <section className="sectionRightQuestion">
-          <button className="answer-button">Antwoord 1</button>
-          <button className="answer-button">Antwoord 2</button>
-          <button className="answer-button">Antwoord 3</button>
-          <button className="answer-button">Antwoord 4</button>
-
-        </section>
-      </section>
-      <section className="sectionExplain">
-              <p className="sectionExplainReason"> Reden van juiste antwoord  </p>
-              <button className="primary-button-style-2"> Ga verder </button>
-          </section>
+      <Question question={currentQuestion} />
     </section>
   );
 };

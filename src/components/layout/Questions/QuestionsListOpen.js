@@ -11,22 +11,26 @@ export const QuestionsListOpen = () => {
   return (
     <section className="questionWrapper">
       <section className="imgWrapperQuestion">
-        <img src="/img/question-mark.png" className="questionImg"/>
+        <img src="/img/question-mark.png" className="questionImg" />
       </section>
       <section className="questionWrapperGrid">
         <section className="sectionLeftQuestion">
-            {/* <button onClick={() => dispatch(getAllQuestions())}> GetAll </button> */}
-            <h1 className="orange-text text-align-center">Vraag</h1>
+          {/* <button onClick={() => dispatch(getAllQuestions())}> GetAll </button> */}
+          <h1 className="orange-text text-align-center">Vraag</h1>
 
-            {allQuestions.map((question) => (
-              <p className="text-align-center" key={question.id}> {question.question}</p>
-            ))}
+          {allQuestions.map((question) => (
+            <p className="text-align-center" key={question.id}>
+              {" "}
+              {question.question}
+            </p>
+          ))}
         </section>
         <section className="sectionRightQuestion">
-          <label for="answer" className="inputLabel">Antwoord:</label>
-          <input type="text" name="answer"/>
+          <label for="answer" className="inputLabel">
+            Antwoord:
+          </label>
+          <input type="text" name="answer" />
           <button className="primary-button-style-2"> Ga verder </button>
-
         </section>
       </section>
     </section>

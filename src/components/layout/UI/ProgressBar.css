@@ -24,8 +24,7 @@ footer{
 
 .progressBarProgress{
     height:24px;
-    width:20%;
     border-radius: 25px;
     background-color: var(--postNL-orange);
-
+    transition: all 0.5s;
 }

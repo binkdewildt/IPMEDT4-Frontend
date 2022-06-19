@@ -43,6 +43,10 @@ header li {
     justify-self: end;
 }
 
+.scoreSection__li {
+    max-height: 84px;
+}
+
 .scoreSection__li > h1{
     color: var(--postNL-orange);
     font-size: 1.4rem;

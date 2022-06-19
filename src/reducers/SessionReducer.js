@@ -1,20 +1,18 @@
-import { checkIfLoggedIn } from "../actions/SessionActions";
-
-const initialState = {
+const initialState = JSON.parse(sessionStorage.getItem("session")) ?? {
   token: "",
   loggedIn: false,
   user: {
-    permissions: "",
-    username: "",
+    name: "",
     email: "",
+    permissions: "",
   },
   errorMessage: "",
 };
 
 export const SessionReducer = (state = initialState, action) => {
   switch (action.type) {
-    // Login is successful
-    case "LOGIN_SUCCESS":
+    // Auth is successful
+    case "AUTH_SUCCESS":
       return {
         errorMessage: "",
         user: action.payload.user,
@@ -22,11 +20,23 @@ export const SessionReducer = (state = initialState, action) => {
         token: action.payload.token,
       };
 
-    // Login has failed
-    case "LOGIN_FAIL":
+    // Auth has failed
+    case "AUTH_FAIL":
       return {
         ...state,
         errorMessage: action.payload,
+      };
+
+    // Clears the login error
+    case "CLEAR_AUTH_ERROR":
+      return {
+        ...state,
+        errorMessage: "",
+      };
+
+    case "LOGOUT":
+      return {
+        state: initialState,
       };
 
     default:

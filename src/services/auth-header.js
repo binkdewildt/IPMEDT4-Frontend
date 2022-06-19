@@ -1,7 +1,10 @@
 export default function authHeader() {
-  const token = sessionStorage.getItem("access_token");
+  const token = JSON.parse(sessionStorage.getItem("session")).token;
   if (token) {
-    return { Authorization: "Bearer " + token };
+    return {
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
   } else {
     return {};
   }

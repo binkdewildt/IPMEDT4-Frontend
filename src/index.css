@@ -1,11 +1,11 @@
 :root {
-  --main-text-color: #29324A;
-  --main-background-color: #F3F4F7;
-  --main-white-color: #FFFFFF;
+  --main-text-color: #29324a;
+  --main-background-color: #f3f4f7;
+  --main-white-color: #ffffff;
 
-  --postNL-orange: #ED7000;
-  --postNL-blue: #3440B6;
-  --input-grey: #D5D9E2;
+  --postNL-orange: #ed7000;
+  --postNL-blue: #3440b6;
+  --input-grey: #d5d9e2;
 }
 
 @font-face {
@@ -20,8 +20,8 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -29,21 +29,21 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.h1-style{
+.h1-style {
   color: var(--main-text-color);
   font-weight: 500;
 }
 
-.h1-style-ignore{
+.h1-style-ignore {
   color: var(--main-text-color);
   font-weight: 500;
 }
 
-.primary-button-style-1{
+.primary-button-style-1 {
   background-color: var(--postNL-orange);
   color: var(--main-white-color);
   padding: 10px 30px 10px 30px;
@@ -53,12 +53,11 @@ code {
   font-size: 1.2rem;
 }
 
-
-.primary-button-style-1:hover{
+.primary-button-style-1:hover {
   cursor: pointer;
 }
 
-.primary-button-style-2{
+.primary-button-style-2 {
   background-color: var(--postNL-blue);
   color: var(--main-white-color);
   padding: 12px 50px 12px 50px;
@@ -68,13 +67,12 @@ code {
   font-size: 1.2rem;
 }
 
-
-.primary-button-style-2:hover{
+.primary-button-style-2:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.secondary-button-style-2{
+.secondary-button-style-2 {
   background-color: var(--main-white-color);
   color: var(--postNL-blue);
   padding: 12px 60px 12px 60px;
@@ -84,12 +82,12 @@ code {
   font-size: 1.2rem;
 }
 
-.secondary-button-style-2:hover{
+.secondary-button-style-2:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.answer-button{
+.answer-button {
   background-color: var(--main-white-color);
   color: var(--postNL-blue);
   border-radius: 10px;
@@ -100,39 +98,42 @@ code {
   transition: 0.2s all;
 }
 
-.answer-button:hover{
+.answer-button:hover {
   background-color: var(--postNL-blue);
   color: var(--main-white-color);
   cursor: pointer;
   border: 2px var(--postNL-blue) solid;
 }
 
-.orange-text{
-  color: var(--postNL-orange)
+.correct-answer-button {
+  background: var(--postNL-orange);
+}
+.wrong-answer-button {
+  background: red;
 }
 
-.text-align-center{
+.orange-text {
+  color: var(--postNL-orange);
+}
+
+.text-align-center {
   text-align: center;
 }
 
-.bigger-font-size{
+.bigger-font-size {
   font-size: 1.4rem;
 }
 
-
-
-
 @media only screen and (max-width: 400px) {
-  .h1-style{
+  .h1-style {
     font-size: 16pt;
   }
 
-
-  .primary-button-style-2{
+  .primary-button-style-2 {
     font-size: 0.8rem;
   }
 
-  .secondary-button-style-2{
+  .secondary-button-style-2 {
     font-size: 0.8rem;
   }
 }

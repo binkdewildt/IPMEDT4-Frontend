@@ -11,8 +11,9 @@ const login = (email, password) => {
       password: password,
     })
     .then((response) => {
-      if (response.data.access_token) {
-        sessionStorage.setItem("access_token", response.data.access_token);
+      if (response.data.user && response.data.access_token) {
+        // sessionStorage.setItem("access_token", response.data.access_token);
+        setSessionStorage(response.data.user, response.data.access_token);
       }
 
       return response.data;
@@ -27,8 +28,9 @@ const register = (name, email, password) => {
       password: password,
     })
     .then((response) => {
-      if (response.data.access_token) {
-        sessionStorage.setItem("access_token", response.data.access_token);
+      if ("access_token" in response.data) {
+        // sessionStorage.setItem("access_token", response.data.access_token);
+        setSessionStorage(response.data.user, response.data.access_token);
       }
 
       return response.data;
@@ -36,9 +38,19 @@ const register = (name, email, password) => {
 };
 
 const logout = () => {
-  if (sessionStorage.getItem("access_token")) {
-    sessionStorage.removeItem("access_token");
+  if (sessionStorage.getItem("session")) {
+    sessionStorage.removeItem("session");
   }
+};
+
+const setSessionStorage = (user, token) => {
+  const session = {
+    token: `Bearer ${token}`,
+    loggedIn: true,
+    user: user,
+    errorMessage: "",
+  };
+  sessionStorage.setItem("session", JSON.stringify(session));
 };
 
 export default {

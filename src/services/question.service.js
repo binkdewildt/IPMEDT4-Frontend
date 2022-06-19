@@ -10,6 +10,8 @@ const getQuestion = (id) => {
   return axios.get(`${URL}/questions/${id}`, { headers: authHeader() });
 };
 
+const answerQuestion = (id, answer) => {};
+
 const addQuestion = ({ props }) => {};
 
 const deleteQuestion = (id) => {};

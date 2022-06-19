@@ -1,34 +1,26 @@
-import React from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
 
-// Components
 import { Login } from "./Login";
-import { logIn, register } from "../../../actions/SessionActions";
+import { Register } from "./Register";
 
-class LoginHandler extends React.Component {
-  render() {
-    return (
-      <>
-        {this.props.session.errorMessage && (
-          <h1> Error: {this.props.session.errorMessage} </h1>
-        )}
-        <Login />
-      </>
-    );
-  }
-}
+export const LoginHandler = () => {
+  const [loggingIn, setLoggingIn] = useState(true);
 
-const mapStateToProps = (state) => {
-  return {
-    session: state.session,
+  const dispatch = useDispatch();
+
+  const toggleLogin = () => {
+    dispatch({ type: "CLEAR_AUTH_ERROR" });
+    setLoggingIn(!loggingIn);
   };
-};
 
-const mapDispatchToProps = () => {
-  return {
-    login: logIn,
-    register: register,
-  };
+  return (
+    <>
+      {loggingIn ? (
+        <Login toggleLogin={toggleLogin} />
+      ) : (
+        <Register toggleLogin={toggleLogin} />
+      )}
+    </>
+  );
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginHandler);
