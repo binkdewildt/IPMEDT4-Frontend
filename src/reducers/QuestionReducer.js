@@ -78,6 +78,7 @@ export const QuestionReducer = (state = initialState, action) => {
       return {
         ...state,
         allQuestions: [...state.allQuestions, action.payload],
+        total: state.allQuestions.length + 1
       };
 
     // Delete a question
