@@ -29,19 +29,18 @@ export const NavBar = () => {
           <img src="/img/postnl-logo.png" alt="PostNL logo"></img>
         </NavLink>
 
-        <section className="signoutSection__li">
-          {/* <a onClick={() => dispatch(logOut())}>Uitloggen</a> */}
-
-          <button
-            type="button"
-            className="a"
-            onClick={() => {
-              dispatch(logOut());
-              navigate("/login");
-            }}>
-            Uitloggen
-          </button>
-        </section>
+        {loggedIn && (
+          <section className="signoutSection__li">
+            <button
+              type="button"
+              className="a"
+              onClick={() => {
+                dispatch(logOut());
+              }}>
+              Uitloggen
+            </button>
+          </section>
+        )}
       </nav>
     </header>
   );

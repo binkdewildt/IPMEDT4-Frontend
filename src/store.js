@@ -1,14 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./reducers";
 
-// Reducers
-import { QuestionReducer } from "./reducers/QuestionReducer";
-import { SessionReducer } from "./reducers/SessionReducer";
-import { QuizReducer } from "./reducers/QuizReducer";
-
-export const store = configureStore({
-  reducer: {
-    questions: QuestionReducer,
-    session: SessionReducer,
-    quiz: QuizReducer,
-  },
-});
+export const store = configureStore({ reducer: rootReducer });

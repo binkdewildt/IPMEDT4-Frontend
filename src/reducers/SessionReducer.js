@@ -1,4 +1,4 @@
-const initialState = JSON.parse(sessionStorage.getItem("session")) ?? {
+const initialState = {
   token: "",
   loggedIn: false,
   user: {
@@ -34,10 +34,8 @@ export const SessionReducer = (state = initialState, action) => {
         errorMessage: "",
       };
 
-    case "LOGOUT":
-      return {
-        state: initialState,
-      };
+    case "SET_SESSION":
+      return action.payload;
 
     default:
       return state;

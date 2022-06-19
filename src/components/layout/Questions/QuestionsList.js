@@ -20,7 +20,6 @@ export const QuestionsList = () => {
   const finished = useSelector((state) => state.quiz.finished);
   const fetched = useSelector((state) => state.questions.fetched);
   const showInfo = useSelector((state) => state.quiz.showInfo);
-  const current = 0;
   const currentQuestion =
     useSelector((state) => state.questions.allQuestions[state.quiz.current]) ??
     null;

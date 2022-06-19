@@ -57,6 +57,10 @@ export const getLastQuiz = () => (dispatch) => {
   return axios
     .get(`${URL}/scores/last`, { headers: authHeader() })
     .then((response) => {
+      
+      if (response.data.length === 0) {
+        return;
+      }
       dispatch({ type: "SET_TOTAL", payload: response.data.total });
 
       dispatch({ type: "SET_LAST_QUIZ", payload: response.data });
