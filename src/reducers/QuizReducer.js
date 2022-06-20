@@ -11,6 +11,7 @@ const initialState = {
   currentQuestion: 0,
   score: 0,
   inQuiz: false,
+  id: null,
   hasPrev: false,
   fetchedPrev: false,
   finished: false,
@@ -64,10 +65,11 @@ export const QuizReducer = (state = initialState, action) => {
     case "SET_LAST_QUIZ":
       return {
         ...state,
+        id: action.payload.id,
         hasPrev: true,
         fetchedPrev: true,
         finished: action.payload.finished,
-        currentQuestion: action.payload.question,
+        currentQuestion: action.payload.question + 1,
         score: action.payload.score,
       };
 
@@ -84,12 +86,20 @@ export const QuizReducer = (state = initialState, action) => {
         finished: false,
         currentQuestion: 0,
         score: 0,
+        id: null,
+        showInfo: true,
       };
 
     case "HIDE_INFO":
       return {
         ...state,
         showInfo: false,
+      };
+
+    case "SET_ID":
+      return {
+        ...state,
+        id: action.payload,
       };
 
     default:

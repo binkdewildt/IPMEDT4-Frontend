@@ -67,8 +67,6 @@ code {
   font-size: 1.2rem;
 }
 
-
-
 .primary-button-style-2:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -126,7 +124,6 @@ code {
   border: 2px var(--postNL-blue) solid;
 }
 
-
 .correct-answer-button {
   background: var(--postNL-orange);
   color: var(--main-white-color);
@@ -140,15 +137,14 @@ code {
   color: var(--postNL-orange);
 }
 
-.red-text{
+.red-text {
   color: red;
 }
 
-.center-button{
+.center-button {
   display: flex;
   justify-content: center;
 }
-
 
 .text-align-center {
   text-align: center;
@@ -169,8 +165,12 @@ code {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media only screen and (max-width: 400px) {

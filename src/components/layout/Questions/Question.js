@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
 // Functions
-import { nextQuestion, finishQuiz } from "../../../actions/QuizActions";
+import {
+  updateScoreToServer,
+  nextQuestion,
+  finishQuiz,
+} from "../../../actions/QuizActions";
 
 export const Question = ({ question }) => {
   //* Variables
+
   const [openAnswer, setOpenAnswer] = useState("");
   const [answered, setAnswered] = useState(false);
   const totalQuestion = useSelector(
     (state) => state.questions.allQuestions.length
   );
   const current = useSelector((state) => state.quiz.currentQuestion);
+  const quizId = useSelector((state) => state.quiz.id);
+  const score = useSelector((state) => state.quiz.score);
+
+  const answeredRef = React.useRef(answered);
 
   //* Inits
   const dispatch = useDispatch();
@@ -29,6 +38,7 @@ export const Question = ({ question }) => {
     }
 
     setAnswered(true);
+    dispatch(updateScoreToServer(quizId, score, current));
   };
 
   const next = () => {
@@ -42,6 +52,23 @@ export const Question = ({ question }) => {
 
     dispatch(nextQuestion());
   };
+
+  //* Effects
+  useEffect(() => {
+    answeredRef.current = answered;
+  }, [answered]);
+
+  useEffect(() => {
+    window.onbeforeunload = () => {
+      console.log("Unmount");
+    };
+    return () => {
+      // Checks wheter the user leaves if a answer is visible and updates the current question
+      if (answeredRef.current) {
+        dispatch(nextQuestion());
+      }
+    };
+  }, []);
 
   // Return
   return (

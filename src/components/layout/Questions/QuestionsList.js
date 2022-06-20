@@ -37,7 +37,6 @@ export const QuestionsList = () => {
     }
 
     if (started && !fetched && !requested) {
-      console.log("Get all the question");
       dispatch(getAllQuestions());
     }
   }, []);

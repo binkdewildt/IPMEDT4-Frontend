@@ -1,6 +1,7 @@
 import axios from "axios";
 import authHeader from "../services/auth-header";
 import { URL } from "../globals/network";
+import { sessionExpired } from "./SessionActions";
 
 /**
  * Start the quiz by fetching all the questions and then dispatching the START_QUIZ action.
@@ -22,6 +23,21 @@ export const stopQuiz = () => (dispatch) => {
   });
 };
 
+export const newQuiz = () => (dispatch) => {
+  // Update the component
+  dispatch({ type: "NEW_QUIZ" });
+
+  // Send to the server
+  return axios
+    .put(`${URL}/scores`, {}, { headers: authHeader() })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+};
+
 /**
  * When the user clicks the 'End Quiz' button, end the quiz.
  */
@@ -39,14 +55,35 @@ export const setScore = (scoreToAdd) => (dispatch) => {
   });
 };
 
+export const updateScoreToServer = (quizId, score, question) => (dispatch) => {
+  const quizBody = {
+    id: quizId,
+    score: score,
+    question: question,
+  };
+
+  // Send to the server
+  return axios
+    .put(`${URL}/scores`, quizBody, { headers: authHeader() })
+    .then((response) => {
+      // Check if the response contains an id, then its a new
+      if (response.data.id) {
+        dispatch({
+          type: "SET_ID",
+          payload: response.data.id,
+        });
+      }
+    })
+    .catch((error) => {
+      if (error.response.status === 401) {
+        dispatch(sessionExpired());
+      }
+    });
+};
+
 export const nextQuestion = () => (dispatch) => {
   // Update the component
   dispatch({ type: "NEXT_QUESTION" });
-
-  // Send to the server
-  axios.put(`${URL}/scores`, { headers: authHeader() }).then((response) => {
-    console.log(response);
-  });
 };
 
 export const finishQuiz = () => (dispatch) => {
@@ -59,9 +96,16 @@ export const getLastQuiz = () => (dispatch) => {
     .then((response) => {
       if (response.data.length === 0) {
         return;
+      } else if (response.data.finished === true) {
+        return;
       }
       dispatch({ type: "SET_TOTAL", payload: response.data.total });
 
       dispatch({ type: "SET_LAST_QUIZ", payload: response.data });
+    })
+    .catch((error) => {
+      if (error.response.status === 401) {
+        dispatch(sessionExpired());
+      }
     });
 };

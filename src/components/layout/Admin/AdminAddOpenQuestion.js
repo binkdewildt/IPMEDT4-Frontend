@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux/es/exports";
 
-import { addOpenQuestion } from "../../../actions/QuestionActions";
+// import { addOpenQuestion } from "../../../actions/QuestionActions";
+import QuestionService from "../../../services/question.service";
 
 import "./AdminAddQuestion.css";
 
@@ -29,11 +30,51 @@ export const AdminAddOpenQuestion = () => {
 
     setError("");
 
-    // Create the question
-    dispatch(addOpenQuestion(question, answer, reason));
+    // Add the question
+    const questionBody = {
+      mcQuestion: false,
+      question: question,
+      answwerA: "",
+      answerB: "",
+      answerC: "",
+      answerD: "",
+      correctAnswer: answer,
+      reason: reason,
+      points: 10,
+    };
 
-    // Redirect to the dashboard
-    navigate("/dashboard");
+    QuestionService.addQuestion(questionBody)
+      .then((response) => {
+        // Add the question
+        dispatch({
+          type: "ADD_QUESTION",
+          payload: questionBody,
+        });
+
+        // Set the success message
+        dispatch({
+          type: "SET_SUCCESS",
+          payload: "👍 De vraag is succesvol toegevoegd",
+        });
+
+        // Clear the message after 10 seconds
+        setTimeout(() => {
+          dispatch({ type: "CLEAR_SUCCESS" });
+        }, 10_000);
+
+        // Navigate back to the dashboard
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        let message = error.message;
+
+        if (error.response.data.error) {
+          if (error.response.data.error.question) {
+            message = "Deze vraag bestaat al.";
+          }
+        }
+        setError(message);
+      });
   };
 
   return (
