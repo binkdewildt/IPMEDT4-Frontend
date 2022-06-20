@@ -87,6 +87,7 @@ export const QuizReducer = (state = initialState, action) => {
         currentQuestion: 0,
         score: 0,
         id: null,
+        showInfo: true,
       };
 
     case "HIDE_INFO":

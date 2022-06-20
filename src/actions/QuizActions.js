@@ -94,7 +94,10 @@ export const getLastQuiz = () => (dispatch) => {
   return axios
     .get(`${URL}/scores/last`, { headers: authHeader() })
     .then((response) => {
+      console.log(response);
       if (response.data.length === 0) {
+        return;
+      } else if (response.data.finished === true) {
         return;
       }
       dispatch({ type: "SET_TOTAL", payload: response.data.total });

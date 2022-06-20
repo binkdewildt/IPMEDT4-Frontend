@@ -12,8 +12,9 @@ export const Learnpath = () => {
   );
   const username = useSelector((state) => state.session.user.name);
   const hasPrev = useSelector((state) => state.quiz.hasPrev);
-  const active = useSelector((state) => state.quiz.inQuiz);
+  const showInfo = useSelector((state) => state.quiz.showInfo);
   const fetched = useSelector((state) => state.quiz.fetchedPrev);
+  const finished = useSelector((state) => state.quiz.finished);
 
   //* Inits
   const dispatch = useDispatch();
@@ -47,13 +48,15 @@ export const Learnpath = () => {
         </h1>
         <section className="flex-center flex-gap">
           <button onClick={() => start()} className="primary-button-style-2">
-            {!hasPrev || active ? "Nieuwe zelfstudie" : "Hervat zelfstudie"}
+            {(hasPrev && !finished) || !showInfo
+              ? "Hervat zelfstudie"
+              : "Nieuwe zelfstudie"}
           </button>
           {admin && (
             <NavLink to="/dashboard" className="secondary-button-style-2">
               Open dashboard
             </NavLink>
-          )}     
+          )}
         </section>
       </section>
       <section className="sectionRightLearnpath">

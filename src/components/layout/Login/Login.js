@@ -88,7 +88,7 @@ export const Login = () => {
               type="button"
               className="a"
               onClick={() => navigate("/register")}>
-              Ik heb al een account
+              Nieuw account aanmaken
             </button>
           </section>
         </form>

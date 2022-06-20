@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { addMcQuestion } from "../../../actions/QuestionActions";
+import QuestionService from "../../../services/question.service";
 
 import "./AdminAddQuestion.css";
 
 export const AdminAddMultipleChoice = () => {
   //* Variables
-  const [question, setQuestion] = useState("Dit is de nieuwe vraag");
-  const [answerA, setAnswerA] = useState("A");
-  const [answerB, setAnswerB] = useState("B");
-  const [answerC, setAnswerC] = useState("C");
-  const [answerD, setAnswerD] = useState("D");
-  const [answerAmount, setAnswerAmount] = useState(3);
-  const [correctAnswer, setCorrectAnswer] = useState("A");
+  const [question, setQuestion] = useState("");
+  const [answerA, setAnswerA] = useState("");
+  const [answerB, setAnswerB] = useState("");
+  const [answerC, setAnswerC] = useState("");
+  const [answerD, setAnswerD] = useState("");
+  const [answerAmount, setAnswerAmount] = useState(2);
+  const [correctAnswer, setCorrectAnswer] = useState("");
   const [error, setError] = useState("");
   const [reason, setReason] = useState("");
 
@@ -36,35 +36,72 @@ export const AdminAddMultipleChoice = () => {
     } else if (answerAmount >= 4 && !answerD) {
       setError("Vul alle velden in");
       return;
+    } else if (!correctAnswer) {
+      setError("Kies een antwoord die juist is");
+      return;
     }
 
-    dispatch(
-      addMcQuestion(
-        question,
-        answerA,
-        answerB,
-        answerC,
-        answerD,
-        answerAmount,
-        correctAnswer,
-        reason
-      )
-    );
+    setError("");
 
-    navigate("/dashboard");
+    // Add the question
+    const questionBody = {
+      mcQuestion: true,
+      question: question,
+      answwerA: answerA,
+      answerB: answerB,
+      answerC: answerC,
+      answerD: answerD,
+      correctAnswer: correctAnswer,
+      reason: reason,
+      points: 10,
+    };
+
+    QuestionService.addQuestion(questionBody)
+      .then((response) => {
+        // Add the question
+        dispatch({
+          type: "ADD_QUESTION",
+          payload: questionBody,
+        });
+
+        // Set the success message
+        dispatch({
+          type: "SET_SUCCESS",
+          payload: "👍 De vraag is succesvol toegevoegd",
+        });
+
+        // Clear the message after 10 seconds
+        setTimeout(() => {
+          dispatch({ type: "CLEAR_SUCCESS" });
+        }, 10_000);
+
+        // Navigate back to the dashboard
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        let message = error.message;
+
+        if (error.response.data.error) {
+          if (error.response.data.error.question) {
+            message = "Deze vraag bestaat al.";
+          }
+        }
+        setError(message);
+      });
   };
 
   const addAnswer = () => {
     setAnswerAmount(answerAmount + 1);
   };
 
-  const deleteAnswer = () => {
-    if (answerAmount === 4) {
-      setAnswerD("");
-    } else if (answerAmount === 3) {
-      setAnswerC("");
+  const deleteAnswer = (answer) => {
+    // Check if answer D needs to be put to C
+    if (answer === 3 && answerAmount > 3) {
+      setAnswerC(answerD);
+      setAnswerD();
     }
     setAnswerAmount(answerAmount - 1);
+    return;
   };
 
   //* Component
@@ -110,7 +147,17 @@ export const AdminAddMultipleChoice = () => {
               onChange={(e) => setAnswerA(e.target.value)}
             />
             <section className="sectionAnswerOptions">
-              <button className="secondary-button-style-2-borderless selected ">✔️ Gemarkeerd als juiste antwoord </button>
+              <button
+                type="button"
+                onClick={() => setCorrectAnswer("A")}
+                className={`secondary-button-style-2-borderless ${
+                  correctAnswer === "A" && "selected"
+                }`}>
+                ✔️
+                {correctAnswer === "A"
+                  ? "Gemarkeerd als juiste antwoord"
+                  : "Markeer als juiste antwoord"}
+              </button>
             </section>
           </section>
 
@@ -124,7 +171,17 @@ export const AdminAddMultipleChoice = () => {
               onChange={(e) => setAnswerB(e.target.value)}
             />
             <section className="sectionAnswerOptions">
-              <button className="secondary-button-style-2-borderless ">✔️ Markeer als juiste antwoord</button>
+              <button
+                type="button"
+                onClick={() => setCorrectAnswer("B")}
+                className={`secondary-button-style-2-borderless ${
+                  correctAnswer === "B" && "selected"
+                }`}>
+                ✔️
+                {correctAnswer === "B"
+                  ? "Gemarkeerd als juiste antwoord"
+                  : "Markeer als juiste antwoord"}
+              </button>
             </section>
           </section>
 
@@ -140,8 +197,23 @@ export const AdminAddMultipleChoice = () => {
                   onChange={(e) => setAnswerC(e.target.value)}
                 />
                 <section className="sectionAnswerOptions">
-                  <button className="secondary-button-style-2-borderless ">✔️ Markeer als juiste antwoord</button>
-                  <button className="secondary-button-style-2-borderless red-text">🗑️ Verwijder antwoord</button>
+                  <button
+                    type="button"
+                    onClick={() => setCorrectAnswer("C")}
+                    className={`secondary-button-style-2-borderless ${
+                      correctAnswer === "C" && "selected"
+                    }`}>
+                    ✔️
+                    {correctAnswer === "C"
+                      ? "Gemarkeerd als juiste antwoord"
+                      : "Markeer als juiste antwoord"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => deleteAnswer(3)}
+                    className="secondary-button-style-2-borderless red-text">
+                    🗑️ Verwijder antwoord
+                  </button>
                 </section>
               </section>
             </>
@@ -159,14 +231,27 @@ export const AdminAddMultipleChoice = () => {
                   onChange={(e) => setAnswerD(e.target.value)}
                 />
                 <section className="sectionAnswerOptions">
-                  <button className="secondary-button-style-2-borderless ">✔️ Markeer als juiste antwoord</button>
-                  <button className="secondary-button-style-2-borderless red-text">🗑️ Verwijder antwoord</button>
+                  <button
+                    type="button"
+                    onClick={() => setCorrectAnswer("D")}
+                    className={`secondary-button-style-2-borderless ${
+                      correctAnswer === "D" && "selected"
+                    }`}>
+                    ✔️
+                    {correctAnswer === "D"
+                      ? "Gemarkeerd als juiste antwoord"
+                      : "Markeer als juiste antwoord"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => deleteAnswer(4)}
+                    className="secondary-button-style-2-borderless red-text">
+                    🗑️ Verwijder antwoord
+                  </button>
                 </section>
-
               </section>
             </>
           )}
-
 
           <section>
             <label htmlFor="reason" className="bigger-font-size">
