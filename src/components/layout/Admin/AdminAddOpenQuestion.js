@@ -43,7 +43,7 @@ export const AdminAddOpenQuestion = () => {
       </h1>
 
       {error && (
-        <section className="sectionError">
+        <section className="sectionError width-fix">
           <img src="/img/exclamation.png" className="errorImg" alt="Error" />
           <p> {error} </p>
         </section>
@@ -62,27 +62,30 @@ export const AdminAddOpenQuestion = () => {
           onChange={(e) => setQuestion(e.target.value)}
           placeholder="Vul de vraag in"
         />
-
         <section className="sectionAnswers">
-          <label htmlFor="answer" className="bigger-font-size">
-            Het antwoord:
-          </label>
-          <input
-            id="answer"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            placeholder="Vul de vraag in"
-          />
+          <section>
+            <label htmlFor="answer" className="bigger-font-size">
+              Het antwoord:
+            </label>
+            <input
+              id="answer"
+              value={answer}
+              onChange={(e) => setAnswer(e.target.value)}
+              placeholder="Vul de vraag in"
+            />
+          </section>
 
-          <label htmlFor="reason" className="bigger-font-size">
-            De reden:
-          </label>
-          <input
-            id="reason"
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-            placeholder="Vul de vraag in"
-          />
+          <section>
+            <label htmlFor="reason" className="bigger-font-size">
+              De reden:
+            </label>
+            <input
+              id="reason"
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+              placeholder="Vul de vraag in"
+            />
+          </section>
 
           <section className="sectionButtonsAdmin">
             <button type="submit" className="primary-button-style-2">

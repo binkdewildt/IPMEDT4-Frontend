@@ -25,6 +25,16 @@
     height: 35vw;
 }
 
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.flex-gap{
+    gap: 2rem;
+}
 
 
 

@@ -45,14 +45,16 @@ export const Learnpath = () => {
         <h1 className="h1-style" style={{ textTransform: "capitalize" }}>
           {username}
         </h1>
-        <button onClick={() => start()} className="primary-button-style-2">
-          {!hasPrev || active ? "Nieuwe zelfstudie" : "Hervat zelfstudie"}
-        </button>
-        {admin && (
-          <NavLink to="/dashboard" className="secondary-button-style-2">
-            Open dashboard
-          </NavLink>
-        )}
+        <section className="flex-center flex-gap">
+          <button onClick={() => start()} className="primary-button-style-2">
+            {!hasPrev || active ? "Nieuwe zelfstudie" : "Hervat zelfstudie"}
+          </button>
+          {admin && (
+            <NavLink to="/dashboard" className="secondary-button-style-2">
+              Open dashboard
+            </NavLink>
+          )}     
+        </section>
       </section>
       <section className="sectionRightLearnpath">
         <img src="/img/roadmap.png" className="roadmapImg" alt="Roadmap"></img>

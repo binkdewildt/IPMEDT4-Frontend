@@ -6,6 +6,9 @@ import "./AdminStartpage.css";
 export const AdminStartpage = () => {
   return (
     <section className="adminStartpageWrapper">
+      <section className="succesMessage">
+        <h2 className="text-align-center h2-mobile"> 👍 De vraag is succesvol toegevoegd </h2>
+      </section>
       <h1 className="text-align-center"> Admin </h1>
       <p className="text-align-center"> Voeg een vraag toe </p>
       <section className="sectionAdminOptions">
