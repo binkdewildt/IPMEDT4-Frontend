@@ -108,9 +108,11 @@ code {
 
 .correct-answer-button {
   background: var(--postNL-orange);
+  color: var(--main-white-color);
 }
 .wrong-answer-button {
   background: red;
+  color: var(--input-grey);
 }
 
 .orange-text {
