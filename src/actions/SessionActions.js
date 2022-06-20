@@ -62,9 +62,15 @@ export const register = (name, email, password) => (dispatch) => {
       });
     })
     .catch((error) => {
-      const message = error.response.data.message
-        ? error.response.data.message
-        : error.message;
+      let message = error.message;
+      
+      if (error.response.data.error) {
+        if (error.response.data.error.email) {
+          message = "Email al in gebruik.";
+        } else if (error.response.data.error.password) {
+          message = "Wachtwoord moet minimaal 8 karakters zijn."
+        }
+      }
 
       dispatch({
         type: "AUTH_FAIL",
