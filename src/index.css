@@ -105,6 +105,7 @@ code {
   border: 2px var(--postNL-blue) solid;
 }
 
+
 .correct-answer-button {
   background: var(--postNL-orange);
 }
@@ -114,6 +115,11 @@ code {
 
 .orange-text {
   color: var(--postNL-orange);
+}
+
+.center-button{
+  display: flex;
+  justify-content: center;
 }
 
 .text-align-center {
