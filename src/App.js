@@ -88,7 +88,15 @@ function App() {
               }
             />
 
-            <Route exact path="/quiz" element={<QuestionsList />} />
+            <Route
+              exact
+              path="/quiz"
+              element={
+                <AuthRoute>
+                  <QuestionsList />
+                </AuthRoute>
+              }
+            />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>

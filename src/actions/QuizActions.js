@@ -1,6 +1,7 @@
 import axios from "axios";
 import authHeader from "../services/auth-header";
 import { URL } from "../globals/network";
+import { sessionExpired } from "./SessionActions";
 
 /**
  * Start the quiz by fetching all the questions and then dispatching the START_QUIZ action.
@@ -74,7 +75,9 @@ export const updateScoreToServer = (quizId, score, question) => (dispatch) => {
       }
     })
     .catch((error) => {
-      console.log(error.response.data);
+      if (error.response.status === 401) {
+        dispatch(sessionExpired());
+      }
     });
 };
 
@@ -97,5 +100,10 @@ export const getLastQuiz = () => (dispatch) => {
       dispatch({ type: "SET_TOTAL", payload: response.data.total });
 
       dispatch({ type: "SET_LAST_QUIZ", payload: response.data });
+    })
+    .catch((error) => {
+      if (error.response.status === 401) {
+        dispatch(sessionExpired());
+      }
     });
 };

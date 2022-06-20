@@ -27,7 +27,7 @@ export const logIn = (email, password) => (dispatch) => {
         : error.message;
 
       dispatch({
-        type: "LOGIN_FAIL",
+        type: "AUTH_FAIL",
         payload: message,
       });
     });
@@ -71,4 +71,16 @@ export const register = (name, email, password) => (dispatch) => {
         payload: message,
       });
     });
+};
+
+export const sessionExpired = () => (dispatch) => {
+  // Destroy the session
+  dispatch(logOut());
+
+  setTimeout(() => {
+    dispatch({
+      type: "AUTH_FAIL",
+      payload: "Sessie is verlopen",
+    });
+  }, 200);
 };
