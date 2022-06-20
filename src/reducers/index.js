@@ -2,12 +2,15 @@
 import { QuestionReducer } from "./QuestionReducer";
 import { SessionReducer } from "./SessionReducer";
 import { QuizReducer } from "./QuizReducer";
+import MessageReducer from "./MessageReducer";
+
 import { combineReducers } from "redux";
 
 const appReducer = combineReducers({
-  questions: QuestionReducer,
+  message: MessageReducer,
   session: SessionReducer,
   quiz: QuizReducer,
+  questions: QuestionReducer,
 });
 
 const rootReducer = (state, action) => {

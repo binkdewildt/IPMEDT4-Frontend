@@ -20,7 +20,7 @@ export const ProgressBar = () => {
       <div className="progressBar">
         <div
           className="progressBarProgress"
-          style={{ width: `${progress}%` }}></div>
+          style={{ width: `${progress}%`, maxWidth: "100%" }}></div>
       </div>
     </footer>
   );
