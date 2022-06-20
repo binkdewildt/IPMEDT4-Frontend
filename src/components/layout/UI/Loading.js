@@ -1,5 +1,9 @@
 import React from "react";
 
 export const Loading = () => {
-  return <div>Loading...</div>;
+  return (
+    <section className="center-button margin-top">
+      <div className="loading"></div>
+    </section>
+  );
 };

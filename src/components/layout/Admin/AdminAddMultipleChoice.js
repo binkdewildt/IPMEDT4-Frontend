@@ -75,7 +75,7 @@ export const AdminAddMultipleChoice = () => {
       </h1>
 
       {error && (
-        <section className="sectionError">
+        <section className="sectionError width-fix">
           <img src="/img/exclamation.png" className="errorImg" alt="Error" />
           <p> {error} </p>
         </section>
@@ -95,61 +95,89 @@ export const AdminAddMultipleChoice = () => {
           placeholder="Vul de vraag in"
         />
         <section className="sectionAnswers">
-          <label className="bigger-font-size margin-top">De antwoorden</label>
-          <p> Minimaal 2, maximaal 4 </p>
+          <section>
+            <label className="bigger-font-size margin-top">De antwoorden</label>
+            <p> Minimaal 2, maximaal 4 </p>
+          </section>
 
-          <label htmlFor="answerA" className="bigger-font-size">
-            Antwoord A:
-          </label>
-          <input
-            id="answerA"
-            value={answerA}
-            onChange={(e) => setAnswerA(e.target.value)}
-          />
+          <section>
+            <label htmlFor="answerA" className="bigger-font-size">
+              Antwoord A:
+            </label>
+            <input
+              id="answerA"
+              value={answerA}
+              onChange={(e) => setAnswerA(e.target.value)}
+            />
+            <section className="sectionAnswerOptions">
+              <button className="secondary-button-style-2-borderless selected ">✔️ Gemarkeerd als juiste antwoord </button>
+            </section>
+          </section>
 
-          <label htmlFor="answerB" className="bigger-font-size">
-            Antwoord B:
-          </label>
-          <input
-            id="answerB"
-            value={answerB}
-            onChange={(e) => setAnswerB(e.target.value)}
-          />
+          <section>
+            <label htmlFor="answerB" className="bigger-font-size">
+              Antwoord B:
+            </label>
+            <input
+              id="answerB"
+              value={answerB}
+              onChange={(e) => setAnswerB(e.target.value)}
+            />
+            <section className="sectionAnswerOptions">
+              <button className="secondary-button-style-2-borderless ">✔️ Markeer als juiste antwoord</button>
+            </section>
+          </section>
 
           {answerAmount >= 3 && (
             <>
-              <label htmlFor="answerC" className="bigger-font-size">
-                Antwoord C:
-              </label>
-              <input
-                id="answerC"
-                value={answerC}
-                onChange={(e) => setAnswerC(e.target.value)}
-              />
+              <section>
+                <label htmlFor="answerC" className="bigger-font-size">
+                  Antwoord C:
+                </label>
+                <input
+                  id="answerC"
+                  value={answerC}
+                  onChange={(e) => setAnswerC(e.target.value)}
+                />
+                <section className="sectionAnswerOptions">
+                  <button className="secondary-button-style-2-borderless ">✔️ Markeer als juiste antwoord</button>
+                  <button className="secondary-button-style-2-borderless red-text">🗑️ Verwijder antwoord</button>
+                </section>
+              </section>
             </>
           )}
 
           {answerAmount >= 4 && (
             <>
-              <label htmlFor="answerD" className="bigger-font-size">
-                Antwoord D:
-              </label>
-              <input
-                id="answerD"
-                value={answerD}
-                onChange={(e) => setAnswerD(e.target.value)}
-              />
+              <section>
+                <label htmlFor="answerD" className="bigger-font-size">
+                  Antwoord D:
+                </label>
+                <input
+                  id="answerD"
+                  value={answerD}
+                  onChange={(e) => setAnswerD(e.target.value)}
+                />
+                <section className="sectionAnswerOptions">
+                  <button className="secondary-button-style-2-borderless ">✔️ Markeer als juiste antwoord</button>
+                  <button className="secondary-button-style-2-borderless red-text">🗑️ Verwijder antwoord</button>
+                </section>
+
+              </section>
             </>
           )}
 
-          <label htmlFor="reason" className="bigger-font-size">
-            De reden:
-          </label>
-          <input
-            id="reason"
-            value={reason}
-            onChange={(e) => setReason(e.target.value)}
-          />
+
+          <section>
+            <label htmlFor="reason" className="bigger-font-size">
+              De reden:
+            </label>
+            <input
+              id="reason"
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+            />
+          </section>
 
           <section className="sectionButtonsAdmin">
             <button

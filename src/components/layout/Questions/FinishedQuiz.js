@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { endQuiz, finishQuiz } from "../../../actions/QuizActions";
+import "./FinishedQuiz.css";
 
 export const FinishedQuiz = () => {
   //* Inits
@@ -18,10 +19,14 @@ export const FinishedQuiz = () => {
   //* Component
   return (
     <section className="questionWrapper">
-      You finished the quiz
-      <button type="button" onClick={() => end()}>
-        End quiz
-      </button>
+      <section className="flex-center">
+        <h1 className="text-align-center"> Je hebt alle vragen beantwoord! </h1>
+        <p className="text-align-center"> Je hebt een totaal score van: </p>
+        <h2 className="text-align-center orange-text"> totaalScoreHier </h2>
+        <button type="button" onClick={() => end()} className="primary-button-style-2 margin-top">
+          Terug naar het dashboard
+        </button>
+      </section>
     </section>
   );
 };
