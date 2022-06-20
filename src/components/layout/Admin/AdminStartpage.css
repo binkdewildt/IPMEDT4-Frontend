@@ -40,6 +40,11 @@
     
 }
 
+.succesMessage{
+    border: 2px var(--postNL-orange) solid;
+    border-radius: 10px 10px 0px 10px;
+}
+
 @media only screen and (max-width: 750px) {
     .sectionAdminOptions{
         display: flex;
@@ -48,4 +53,9 @@
         justify-content: center;
         gap: 3rem;
     }
+
+    .h2-mobile{
+        font-size: 0.9rem;
+    }
+
   }
