@@ -28,7 +28,7 @@ export const newQuiz = () => (dispatch) => {
   dispatch({ type: "NEW_QUIZ" });
 
   // Send to the server
-  axios
+  return axios
     .put(`${URL}/scores`, {}, { headers: authHeader() })
     .then((response) => {
       console.log(response);
@@ -63,7 +63,7 @@ export const updateScoreToServer = (quizId, score, question) => (dispatch) => {
   };
 
   // Send to the server
-  axios
+  return axios
     .put(`${URL}/scores`, quizBody, { headers: authHeader() })
     .then((response) => {
       // Check if the response contains an id, then its a new
@@ -94,7 +94,6 @@ export const getLastQuiz = () => (dispatch) => {
   return axios
     .get(`${URL}/scores/last`, { headers: authHeader() })
     .then((response) => {
-      console.log(response);
       if (response.data.length === 0) {
         return;
       } else if (response.data.finished === true) {
