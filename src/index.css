@@ -67,6 +67,8 @@ code {
   font-size: 1.2rem;
 }
 
+
+
 .primary-button-style-2:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -80,6 +82,25 @@ code {
   border-radius: 34px;
   font-family: PostNL-regular;
   font-size: 1.2rem;
+}
+
+.secondary-button-style-2-borderless {
+  background-color: var(--main-white-color);
+  color: var(--main-text-color);
+  border: none;
+  font-family: PostNL-light;
+  font-size: 1.2rem;
+}
+
+.selected {
+  border: 1px var(--postNL-orange) solid;
+  border-radius: 34px;
+  padding: 10px;
+}
+
+.secondary-button-style-2-borderless:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .secondary-button-style-2:hover {
@@ -119,10 +140,15 @@ code {
   color: var(--postNL-orange);
 }
 
+.red-text{
+  color: red;
+}
+
 .center-button{
   display: flex;
   justify-content: center;
 }
+
 
 .text-align-center {
   text-align: center;
@@ -130,6 +156,21 @@ code {
 
 .bigger-font-size {
   font-size: 1.4rem;
+}
+
+.loading {
+  border: 6px solid var(--main-text-color);
+  border-radius: 50%;
+  border-top: 6px solid var(--postNL-orange);
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @media only screen and (max-width: 400px) {

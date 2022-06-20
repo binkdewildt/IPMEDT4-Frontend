@@ -83,6 +83,7 @@ function App() {
               path="/"
               element={
                 <AuthRoute>
+                  <Loading />
                   <Learnpath />
                 </AuthRoute>
               }
