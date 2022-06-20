@@ -58,6 +58,15 @@ export const AdminAddMultipleChoice = () => {
     setAnswerAmount(answerAmount + 1);
   };
 
+  const deleteAnswer = () => {
+    if (answerAmount === 4) {
+      setAnswerD("");
+    } else if (answerAmount === 3) {
+      setAnswerC("");
+    }
+    setAnswerAmount(answerAmount - 1);
+  };
+
   //* Component
   return (
     <section className="AdminAddQuestion">

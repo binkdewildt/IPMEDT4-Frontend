@@ -22,6 +22,21 @@ export const stopQuiz = () => (dispatch) => {
   });
 };
 
+export const newQuiz = () => (dispatch) => {
+  // Update the component
+  dispatch({ type: "NEW_QUIZ" });
+
+  // Send to the server
+  axios
+    .put(`${URL}/scores`, {}, { headers: authHeader() })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+};
+
 /**
  * When the user clicks the 'End Quiz' button, end the quiz.
  */
@@ -39,14 +54,33 @@ export const setScore = (scoreToAdd) => (dispatch) => {
   });
 };
 
+export const updateScoreToServer = (quizId, score, question) => (dispatch) => {
+  const quizBody = {
+    id: quizId,
+    score: score,
+    question: question,
+  };
+
+  // Send to the server
+  axios
+    .put(`${URL}/scores`, quizBody, { headers: authHeader() })
+    .then((response) => {
+      // Check if the response contains an id, then its a new
+      if (response.data.id) {
+        dispatch({
+          type: "SET_ID",
+          payload: response.data.id,
+        });
+      }
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+};
+
 export const nextQuestion = () => (dispatch) => {
   // Update the component
   dispatch({ type: "NEXT_QUESTION" });
-
-  // Send to the server
-  axios.put(`${URL}/scores`, { headers: authHeader() }).then((response) => {
-    console.log(response);
-  });
 };
 
 export const finishQuiz = () => (dispatch) => {

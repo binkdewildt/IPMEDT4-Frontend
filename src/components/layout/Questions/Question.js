@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 
 // Functions
-import { nextQuestion, finishQuiz } from "../../../actions/QuizActions";
+import {
+  updateScoreToServer,
+  nextQuestion,
+  finishQuiz,
+} from "../../../actions/QuizActions";
 
 export const Question = ({ question }) => {
   //* Variables
@@ -12,6 +16,8 @@ export const Question = ({ question }) => {
     (state) => state.questions.allQuestions.length
   );
   const current = useSelector((state) => state.quiz.currentQuestion);
+  const quizId = useSelector((state) => state.quiz.id);
+  const score = useSelector((state) => state.quiz.score);
 
   //* Inits
   const dispatch = useDispatch();
@@ -29,6 +35,7 @@ export const Question = ({ question }) => {
     }
 
     setAnswered(true);
+    dispatch(updateScoreToServer(quizId, score, current));
   };
 
   const next = () => {
