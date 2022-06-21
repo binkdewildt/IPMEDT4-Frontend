@@ -7,8 +7,8 @@ import { Navigate } from "react-router-dom";
 import "./Login.css";
 
 export const Login = () => {
-  const [email, setEmail] = useState("admin@gmail.com");
-  const [password, setPassword] = useState("admin123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

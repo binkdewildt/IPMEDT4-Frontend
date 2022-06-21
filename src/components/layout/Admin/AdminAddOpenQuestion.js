@@ -9,9 +9,9 @@ import "./AdminAddQuestion.css";
 
 export const AdminAddOpenQuestion = () => {
   //* Variables
-  const [question, setQuestion] = useState("Testen vraag toevoegen");
-  const [answer, setAnswer] = useState("12");
-  const [reason, setReason] = useState("Is er niet");
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+  const [reason, setReason] = useState("");
   const [error, setError] = useState();
 
   //* Inits
