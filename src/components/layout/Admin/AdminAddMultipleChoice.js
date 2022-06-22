@@ -47,7 +47,7 @@ export const AdminAddMultipleChoice = () => {
     const questionBody = {
       mcQuestion: true,
       question: question,
-      answwerA: answerA,
+      answerA: answerA,
       answerB: answerB,
       answerC: answerC,
       answerD: answerD,
