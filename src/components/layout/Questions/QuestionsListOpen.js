@@ -26,6 +26,7 @@ export const QuestionsListOpen = () => {
           ))}
         </section>
         <section className="sectionRightQuestion">
+            <p> Vul een antwoord in. </p>
           <label for="answer" className="inputLabel">
             Antwoord:
           </label>

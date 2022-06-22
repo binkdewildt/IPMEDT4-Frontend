@@ -138,7 +138,12 @@ export const Question = ({ question }) => {
             )}
           </section>
         ) : (
+          
           <section className="sectionRightQuestion">
+            <section className="sectionError">
+              <img src="/img/exclamation.png" className="errorImg" alt="Error" />
+              <p> Vul een antwoord in. </p>
+            </section>
             <label htmlFor="answer" className="inputLabel">
               Antwoord:
             </label>
@@ -164,11 +169,18 @@ export const Question = ({ question }) => {
         )}
       </section>
       {answered && (
-        <section className="sectionExplain">
-          <p className="sectionExplainReason"> {question.reason}</p>
-          <button onClick={() => next()} className="primary-button-style-2">
-            Ga verder
-          </button>
+        <section>
+          <section className="openQuestionAnswer">
+            <h2> Goede antwoord: </h2>
+            <p> Ruimte voor het goede antwoord </p>
+          </section>
+          <section className="sectionExplain">
+            <h2> Uitleg: </h2>
+            <p className="sectionExplainReason"> {question.reason}</p>
+            <button onClick={() => next()} className="primary-button-style-2">
+              Ga verder
+            </button>
+          </section>
         </section>
       )}
     </>

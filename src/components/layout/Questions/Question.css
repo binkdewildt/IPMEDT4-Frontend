@@ -60,6 +60,14 @@
   text-align: center;
 }
 
+.openQuestionAnswer {
+  margin-top: 20px;
+  border: 2px var(--input-grey) solid;
+  border-radius: 10px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
 .inputLabel {
   margin-top: 100px;
 }
