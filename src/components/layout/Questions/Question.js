@@ -13,6 +13,8 @@ export const Question = ({ question }) => {
 
   const [openAnswer, setOpenAnswer] = useState("");
   const [answered, setAnswered] = useState(false);
+  const [error, setError] = useState("");
+
   const totalQuestion = useSelector(
     (state) => state.questions.allQuestions.length
   );
@@ -30,6 +32,9 @@ export const Question = ({ question }) => {
     // Check if not already answered
     if (answered) {
       return;
+    } else if (!question.mcQuestion && !openAnswer) {
+      setError("Vul een antwoord in");
+      return;
     }
 
     // Correct, add the score
@@ -37,6 +42,7 @@ export const Question = ({ question }) => {
       dispatch({ type: "ADD_SCORE", payload: question.points });
     }
 
+    setError("");
     setAnswered(true);
     dispatch(updateScoreToServer(quizId, score, current));
   };
@@ -138,16 +144,23 @@ export const Question = ({ question }) => {
             )}
           </section>
         ) : (
-          
           <section className="sectionRightQuestion">
-            <section className="sectionError">
-              <img src="/img/exclamation.png" className="errorImg" alt="Error" />
-              <p> Vul een antwoord in. </p>
-            </section>
+            {error && (
+              <section className="sectionError">
+                <img
+                  src="/img/exclamation.png"
+                  className="errorImg"
+                  alt="Error"
+                />
+                <p> {error} </p>
+              </section>
+            )}
+
             <label htmlFor="answer" className="inputLabel">
               Antwoord:
             </label>
             <input
+              className={`${answered ? (openAnswer === question.correctAnswer ? 'right' : 'wrong') : ''}`}
               type="text"
               id="answer"
               value={openAnswer}
@@ -170,10 +183,13 @@ export const Question = ({ question }) => {
       </section>
       {answered && (
         <section>
-          <section className="openQuestionAnswer">
-            <h2> Goede antwoord: </h2>
-            <p> Ruimte voor het goede antwoord </p>
-          </section>
+          {!question.mcQuestion && (
+            <section className="openQuestionAnswer">
+              <h2> Goede antwoord: </h2>
+              <p> {question.correctAnswer} </p>
+            </section>
+          )}
+
           <section className="sectionExplain">
             <h2> Uitleg: </h2>
             <p className="sectionExplainReason"> {question.reason}</p>

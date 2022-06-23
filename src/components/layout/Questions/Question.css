@@ -72,9 +72,16 @@
   margin-top: 100px;
 }
 
-.orange-text{
-    color: var(--postNL-orange)
-  }
+.orange-text {
+  color: var(--postNL-orange);
+}
+
+.right {
+  border-color: var(--postNL-orange);
+}
+.wrong {
+  border-color: red;
+}
 
 @media only screen and (max-width: 700px) {
   .questionWrapperGrid {
